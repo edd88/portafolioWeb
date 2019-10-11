@@ -24,6 +24,42 @@ public class DAOPlan {
         conexion = new Cl_Conexion();
     }
     
+    public List<Cl_PlanContratado> listarPlan() throws Exception{
+        CallableStatement cstmt = null;
+        ResultSet rs = null;
+        List<Cl_PlanContratado> listaPlan;
+        listaPlan = new ArrayList<>();
+        String sql = "{call PKG_PLANCONTRATADO.LISTAR_PLANCONTRATADO(?)}";
+        try{
+            cstmt = conexion.Conectar().prepareCall(sql);
+            cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            cstmt.executeUpdate();
+            rs = (ResultSet) cstmt.getObject(1);
+            while (rs.next()) {                
+                Cl_PlanContratado plan = new Cl_PlanContratado();
+                plan.setIdPlan(rs.getInt(1));
+                plan.setFecPlan(rs.getDate(2));
+                plan.setPrecio(rs.getInt(3));
+                plan.setSucursal(rs.getString(4));
+                plan.setEstado(rs.getInt(5));
+                plan.setIdCliente(rs.getInt(6));
+                plan.setIdProfesional(rs.getInt(7));
+                listaPlan.add(plan);
+            }
+            return listaPlan;
+        } catch (Exception err) {
+            throw new Exception(err);
+        }finally{
+            conexion.Conectar().close();
+            if (cstmt != null) {
+                cstmt.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+    }
+    
     public Cl_PlanContratado obtenerPlan(int idPlan) throws Exception{
         CallableStatement cstmt = null;
         ResultSet rs = null;
