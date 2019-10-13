@@ -5,6 +5,7 @@
  */
 package clases;
 import DAO.DAOCheckList;
+import DAO.DAOUsuario;
 import clases.Cl_CheckList;
 import com.sun.corba.se.spi.activation.Server;
 import java.sql.SQLException;
@@ -23,22 +24,26 @@ public class Test {
         System.out.println("--------------------------------------");
         Cl_Conexion conexion = new Cl_Conexion();
         conexion.Conectar();
-        Cl_CheckList ub = new Cl_CheckList();
+//        Cl_CheckList ub = new Cl_CheckList();
+//        
+//        ub.setDescripcion("asensores");
+//        ub.setIdPlan(3);
+//        DAOCheckList daoc = new DAOCheckList();
+//        
+//        try {
+//            if (daoc.ingresarCheck(ub)) {
+//                System.out.println("Agrego");
+//            }
+//            else{
+//                System.out.println("no agrego");
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-        ub.setDescripcion("asensores");
-        ub.setIdPlan(3);
-        DAOCheckList daoc = new DAOCheckList();
-        
-        try {
-            if (daoc.ingresarCheck(ub)) {
-                System.out.println("Agrego");
-            }
-            else{
-                System.out.println("no agrego");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        DAOUsuario daoUsuario = new DAOUsuario();
+        Cl_Usuario user = daoUsuario.obtenerUsuario("PROFESIONAL1", "PROFESIONAL123");
+        System.out.println(user.getUsuario());
+        System.out.println(user.getIdTipoUsuario());
     }
 }

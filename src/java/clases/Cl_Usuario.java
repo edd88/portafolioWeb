@@ -11,7 +11,7 @@ public class Cl_Usuario {
     private String usuario;
     private String pass;
     private int estadoUsuario;
-    private int idtipoUsuario;
+    private int idTipoUsuario;
 
     public Cl_Usuario() {
     }
@@ -21,17 +21,8 @@ public class Cl_Usuario {
         this.usuario = usuario;
         this.pass = pass;
         this.estadoUsuario = estadoUsuario;
-        this.idtipoUsuario = idtipoUsuario;
+        this.idTipoUsuario = idtipoUsuario;
     }
-
-    public int getIdtipoUsuario() {
-        return idtipoUsuario;
-    }
-
-    public void setTipoUsuario(int idtipoUsuario) {
-       this.idtipoUsuario = idtipoUsuario;
-    }
-
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -63,4 +54,14 @@ public class Cl_Usuario {
     public void setEstadoUsuario(int estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
+
+    public int getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
+
+    public void setIdTipoUsuario(int idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
+    }
+    
+    
 }

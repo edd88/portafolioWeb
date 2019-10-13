@@ -23,7 +23,7 @@ public class DAOUsuario {
     public Cl_Usuario obtenerUsuario(String user, String pass) throws Exception{
         CallableStatement cstmt = null;
         ResultSet rs = null;
-        String sql = "{call PKG_USUARIO.OBTENER_USUARIO(?,?)}";
+        String sql = "{call PKG_USUARIO.BUSCAR_USUARIO(?,?,?)}";
         try{
             cstmt = conexion.Conectar().prepareCall(sql);
             cstmt.setString(1, user);
@@ -37,6 +37,7 @@ public class DAOUsuario {
                 usuario.setUsuario(rs.getString(2));
                 usuario.setPass(rs.getString(3));
                 usuario.setEstadoUsuario(rs.getInt(4));
+                usuario.setIdTipoUsuario(rs.getInt(5));
             }
             return usuario;
         } catch (Exception err) {

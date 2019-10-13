@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class Cl_Conexion {
     private static Connection conexion;
-    String cadena = "jdbc:Oracle:thin:@localhost:1521:orcl";
+    String cadena = "jdbc:Oracle:thin:@localhost:1521:XE";
 
     public Connection Conectar() throws Exception {
         try {
