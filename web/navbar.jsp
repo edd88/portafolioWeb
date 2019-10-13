@@ -1,11 +1,6 @@
 <%@page import="clases.Cl_Usuario"%>
 <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-    <%
-        HttpSession sesion = request.getSession();
-
-        Cl_Usuario usuario = (Cl_Usuario) sesion.getAttribute("usuario");
-
-    %>
+    
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="site-logo">

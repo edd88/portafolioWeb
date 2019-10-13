@@ -1,3 +1,10 @@
+<%@page import="clases.Cl_Usuario"%>
+<%
+        HttpSession sesion = request.getSession();
+
+        Cl_Usuario usuario = (Cl_Usuario) sesion.getAttribute("usuario");
+
+%>
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -17,8 +24,12 @@
                 <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> nmaccidentes@gmail.com</a> 
             </div>
             <div class="col-lg-3 text-right">
-
+                <%if(usuario==null){%>
                 <a href="login.jsp" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Login</a>
+                <%}
+                if (usuario!=null) {%>
+                <a href="logout.jsp" class="small btn btn-danger px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> LogOut</a>        
+                <%}%>
             </div>
         </div>
     </div>
